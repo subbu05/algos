@@ -37,6 +37,7 @@ func main() {
 	}
 
 	fmt.Print(findMaxIterative(head))
+	fmt.Print(findMaxRecursive(head))
 }
 
 func findMaxIterative(root *tree) int {
@@ -62,3 +63,20 @@ func findMaxIterative(root *tree) int {
 	return max
 }
 
+func findMaxRecursive(root *tree) int {
+	max := -1
+	if root == nil {
+		return max
+	}
+	lMax := findMaxRecursive(root.left)
+	rMax := findMaxRecursive(root.right)
+	if lMax > rMax {
+		max = lMax
+	} else {
+		max = rMax
+	}
+	if root.val > max {
+		return root.val
+	}
+	return max
+}

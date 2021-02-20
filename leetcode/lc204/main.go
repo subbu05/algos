@@ -2,35 +2,35 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	fmt.Println(countPrimes2(10))
+	fmt.Println(countPrimes(10))
 }
 
 func countPrimes(n int) int {
-	if n <= 1 {
+	if n < 1 {
 		return 0
 	}
-
-	notPrimes := make([]bool, n)
-	notPrimes[0] = true
-	notPrimes[1] = true
-	for j := 2; j < int(math.Sqrt(float64(n))); j++ {
-		if !notPrimes[j] {
-			for k := 2; k*j < n; k++ {
-				notPrimes[k*j] = true
+	p := make([]bool, n)
+	for i := 2; i < n; i++ {
+		p[i] = true
+	}
+	for j := 2; j*j < n; j++ {
+		if p[j] == true {
+			for k := j * j; k < n; k += j {
+				p[k] = false
 			}
 		}
 	}
-	sum := 0
+	c := 0
 	for i := 0; i < n; i++ {
-		if notPrimes[i] == true {
-			sum++
+		if p[i] == true {
+			c++
 		}
+
 	}
-	return sum
+	return c
 }
 
 func countPrimes2(n int) int {

@@ -1,0 +1,37 @@
+package main
+
+type graph struct {
+    elements [][]int
+}
+
+func main() {
+    temp := [][]int{}
+    for i:=0;i<5;i++{
+        temp = append(temp, make([]int,5))
+    }
+    g := &graph {
+        elements : temp,
+    }
+
+    addEdge(g,0,1)
+    addEdge(g,0,5)
+    addEdge(g,0,3)
+    addEdge(g,1,2)
+    addEdge(g,3,4)
+   
+    dfs(g,make([]int,5))
+}
+
+
+func addEdge(g *graph, v1, v2 int) {
+    if v1 < 0 || v1 >= len(g) || v2 < 0 || v2 >= len(g) {
+        return
+    }
+    g[v1][v2] = 1
+    g[v2][v1] = 1
+}
+
+
+func dfs(g *graph, visited []int) {
+
+}

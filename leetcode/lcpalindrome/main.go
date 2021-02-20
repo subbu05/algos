@@ -7,19 +7,19 @@ func main() {
 }
 func canPermutePalindrome(s string) bool {
 	m := make(map[rune]int)
-	for _,v := range s {
-		if _, ok := m[v] ; ok {
-			m[v]-=1
+	for _, v := range s {
+		if _, ok := m[v]; ok {
+			m[v] -= 1
 		} else {
 			m[v] += 1
 		}
 	}
-	odds:=0
+	odds := 0
 	fmt.Println(m)
 
-	for _,v := range m {
+	for _, v := range m {
 		fmt.Println(v)
-		if  v % 2 !=0 {
+		if v%2 != 0 {
 			odds++
 		}
 

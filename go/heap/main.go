@@ -36,7 +36,7 @@ func main() {
 	heap.Init(h)
 	heap.Push(h, 3)
 	fmt.Printf("minimum: %d\n", (*h)[0])
-	heap.Remove(h,2)
+	heap.Remove(h, 2)
 	for h.Len() > 0 {
 		fmt.Printf("%d ", heap.Pop(h))
 	}

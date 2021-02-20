@@ -7,7 +7,7 @@ import (
 )
 
 type singleLinkedList struct {
-	val int
+	val  int
 	next *singleLinkedList
 }
 
@@ -25,7 +25,6 @@ func insertFrontSingleLinkedList(head *singleLinkedList, v int) *singleLinkedLis
 	return temp
 }
 
-
 func deleteFrontSingleLinkedList(head *singleLinkedList) (*singleLinkedList, int) {
 	if head == nil {
 		return nil
@@ -39,24 +38,24 @@ func main() {
 
 type stack struct {
 	head *singleLinkedList
-	top int
+	top  int
 }
 
-func peekStack(s *stack) (int,error) {
+func peekStack(s *stack) (int, error) {
 	if s.top >= 0 {
 		return s.head.val, nil
 	}
-	return 0,EMPTY_STACK_ERROR
+	return 0, EMPTY_STACK_ERROR
 }
 
 func (s *stack) push(v int) {
-	s.head = insertFrontSingleLinkedList(s.head,v)
+	s.head = insertFrontSingleLinkedList(s.head, v)
 }
 
-func (s *stack) pop() (int,error) {
-	,err := deleteFrontSingleLinkedList(s.head)
+/*func (s *stack) pop() (int,error) {
+    deleteFrontSingleLinkedList(s.head)
 
-}
+}*/
 
 func sllAsStack() {
 	s := &stack{
